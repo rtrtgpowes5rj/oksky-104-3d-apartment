@@ -1,5 +1,7 @@
 # Окский 104 — интерьер v6
 
+[Открыть интерактивную 3D-прогулку](https://rtrtgpowes5rj.github.io/oksky-104-3d-apartment/)
+
 Откройте `dist/index.html` в современном браузере с WebGL2. Все материалы и код встроены в этот файл; интернет для просмотра не нужен. Исходники: `npm install`, `npm run dev`. Проверки: `npm run validate`, `node scripts/test-controls.mjs`, `npm run build`.
 
 ## Что изменено
