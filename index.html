@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#eeece6"><title>Окский 104 — интерьер / v6</title></head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#" id="homeLink" aria-label="Вся квартира"><span>ОКСКИЙ</span><b>104<span> / интерьер</span></b></a>
+    <div class="intro"><span class="eyebrow">Современная квартира</span><h1>Тепло.<br>Свет. Фактура.</h1><p>62,49 м² · новая планировка</p></div>
+    <div class="rooms-heading"><span class="eyebrow">Пространства</span><span>09</span></div>
+    <nav id="roomNav" aria-label="Помещения квартиры"></nav>
+    <div class="palette"><span class="eyebrow">Материалы</span><div class="palette-buttons"><button data-palette="warm" class="selected" aria-pressed="true"><i class="swatch warm"></i> Дуб / navy</button><button data-palette="contrast" aria-pressed="false"><i class="swatch contrast"></i> Navy / терракота</button></div><p id="paletteText">Светлый дуб, тёплый камень,<br>navy и мягкая охра.</p></div>
+    <div class="sidebar-foot">Концепция ремонта и мебели <b>2,5 млн ₽</b></div>
+  </aside>
+  <main id="viewport">
+    <canvas id="scene" aria-label="Интерактивная 3D-модель квартиры" tabindex="0"></canvas>
+    <header class="toolbar"><div class="modes" role="group" aria-label="Режим просмотра"><button data-mode="plan" class="selected" aria-pressed="true">Макет</button><button data-mode="top" aria-pressed="false">Сверху</button><button data-mode="walk" aria-pressed="false">Прогулка</button></div><div class="tools"><button id="lightButton" aria-pressed="false">Дневной свет</button><button id="mapButton" aria-expanded="false">План</button><button id="helpButton" aria-expanded="false">Управление</button></div></header>
+    <section class="room-caption" aria-live="polite"><span class="eyebrow" id="roomKicker">Общий вид</span><h2 id="roomTitle">Вся квартира</h2><p id="roomDescription">Девять пространств для жизни, работы и отдыха.</p></section>
+    <div class="view-actions"><button id="kitchenView">Ракурс кухни</button><button id="resetButton">Вся квартира</button><button id="captureButton">Сохранить кадр</button></div>
+    <section class="minimap-panel" id="mapPanel" hidden><div class="panel-head"><b>Планировка</b><button id="closeMap">Закрыть</button></div><svg id="minimap" viewBox="-20 -20 1100 760" role="img" aria-label="План квартиры, выбор комнаты"></svg><p>Глухая стена отделяет кабинет от гостиной.</p><small id="routeStatus"></small></section>
+    <section class="help-panel" id="helpPanel" hidden><div class="panel-head"><b>Как осмотреть квартиру</b><button id="closeHelp">Закрыть</button></div><p><b>Макет:</b> тяните мышью для вращения; правая кнопка — сдвиг; колесо — масштаб.</p><p><b>Прогулка:</b> WASD / стрелки — движение, тяните мышью — обзор, двойной клик — свободная мышь, Esc — вернуть курсор. Колесо — поле зрения.</p><p><b>Телефон:</b> свайп для обзора и экранные кнопки для движения.</p><div id="diagnostics"></div></section>
+    <div class="walk-tip" id="walkPrompt" hidden>Тяните мышью, чтобы осмотреться · WASD — движение</div>
+    <div class="touch-controls" id="touchControls" hidden><button data-key="KeyW" aria-label="Вперёд">Вперёд</button><div><button data-key="KeyA" aria-label="Влево">Влево</button><button data-key="KeyS" aria-label="Назад">Назад</button><button data-key="KeyD" aria-label="Вправо">Вправо</button></div></div>
+    <div class="loading" id="loading"><span>ОКСКИЙ 104</span><p>Подготавливаю материалы и свет…</p></div>
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body></html>
