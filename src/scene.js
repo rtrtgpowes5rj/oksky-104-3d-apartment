@@ -45,11 +45,11 @@ function vase(b,x,y,z,s=1){b.cyl('ceramic',.07*s,.09*s,.18*s,x,y+.09*s,z);b.cyl(
 function plant(b,x,z,s=1,y=0){b.cyl('stone',.16*s,.12*s,.30*s,x,y+.15*s,z,28);b.cyl('oakEnd',.142*s,.14*s,.012,x,y+.297*s,z);for(let i=0;i<11;i++){const a=i*2.399,r=(.18+i%3*.04)*s,top=y+(.50+i%4*.13)*s,ex=x+Math.cos(a)*r,ez=z+Math.sin(a)*r;b.tube('leaf',[[x,y+.28*s,z],[x+Math.cos(a)*r*.35,top-.14*s,z+Math.sin(a)*r*.35],[ex,top,ez]],.007*s);b.ball(i%3?'leaf':'leafLight',ex,top,ez,.10*s,.024*s,.21*s,-a);}}
 function lamp(b,x,y,z){b.cyl('brass',.1,.1,.018,x,y+.009,z);b.cyl('brass',.009,.009,.32,x,y+.17,z,12);b.cyl('cream',.1,.18,.18,x,y+.4,z,32);b.cyl('glow',.164,.164,.005,x,y+.313,z,32);}
 function chair(b,x,z,a=0,office=false){b.at(x,z,a,()=>{b.box(office?'green':'linen',.47,.115,.47,0,.47,0,0,.055);b.box(office?'green':'linen',.49,.48,.105,0,.74,-.19,0,.06);if(office){b.cyl('metal',.027,.027,.35,0,.24,0,12);for(let i=0;i<5;i++){const a=i*Math.PI*2/5;b.box('metal',.28,.023,.028,Math.sin(a)*.14,.075,Math.cos(a)*.14,Math.PI/2-a,.009);b.ball('black',Math.sin(a)*.27,.05,Math.cos(a)*.27,.036,.036,.022);}for(const s of [-1,1])b.box('metal',.03,.024,.29,s*.27,.66,0,0,.012);}else for(const x of [-.17,.17])for(const z of [-.17,.17])b.box('oakEnd',.028,.41,.028,x,.22,z,0,.008);});}
-function sofa(b,w,d){
+function sofa(b,w,d,{leftArm=true,rightArm=true}={}){
   b.box('sofa',w-.10,.20,d-.08,0,.18,0,0,.095);
   b.box('sofa',w,.34,d,0,.34,0,0,.16);const n=w>1.6?3:2,cw=(w-.22)/n;
   for(let i=0;i<n;i++){const u=n===1?0:i/(n-1)*2-1,x=-w/2+.11+cw*(i+.5),curve=Math.abs(u)*.035,turn=u*.035;b.box('sofa',cw-.018,.24,d-.19,x,.56,.055+curve,turn,.11);b.box('sofa',cw-.015,.52,.25,x,.80,-d/2+.125+curve,turn,.12);}
-  for(const s of [-1,1]){b.ball('sofa',s*(w/2-.105),.57,.01,.17,.25,d*.49,s*.04);b.ball('sofa',s*(w/2-.10),.82,-d*.29,.16,.22,.18,s*.04);}
+  for(const s of [-1,1])if((s<0&&leftArm)||(s>0&&rightArm)){b.ball('sofa',s*(w/2-.105),.57,.01,.17,.25,d*.49,s*.04);b.ball('sofa',s*(w/2-.10),.82,-d*.29,.16,.22,.18,s*.04);}
   for(const [x,k,a] of [[-w*.27,'clay',-.16],[w*.27,'mustard',.18]])b.add(k,new RoundedBoxGeometry(.35,.35,.15,3,.07),x,.84,-d*.14,-.15,0,a);
 }
 function bed(b,w,d,single=false){for(const x of [-w*.36,w*.36])for(const z of [-d*.36,d*.36])b.cyl('oakEnd',.032,.038,.18,x,.10,z,12);b.box('linen',w+.08,.22,d+.05,0,.25,0,0,.075);b.box('cream',w,.22,d,0,.45,0,0,.075);b.box(single?'clay':'green',w+.12,1.10,.12,0,.64,-d/2-.035,0,.075);const n=single?1:2;for(let i=0;i<n;i++){const x=single?0:(i-.5)*w*.47;b.box('cream',single?w*.76:w*.43,.12,.51,x,.625,-d*.30,.01,.057);b.box('linen',single?w*.60:w*.37,.105,.44,x,.69,-d*.30,-.02,.05);}b.box('cream',w+.01,.09,d*.63,0,.602,d*.16,0,.038);b.box(single?'linen':'clay',w+.05,.025,.48,0,.661,d*.29,0,.012);for(let i=0;i<7;i++)b.box(single?'linen':'clay',.018,.007,.48,-w/2+.08+i*w/7,.678,d*.29);}
@@ -72,7 +72,7 @@ function bathroom(b,{kind,w,d}){
   if(kind==='sink'){b.box('oak',w,.50,d,0,.41,0,0,.016);b.box('stone',w+.025,.035,d+.025,0,.68,0,0,.012);basin(b,0,.726,-.02,w*.86,d*.80);faucet(b,0,.72,.16);b.box('mirror',w*.9,.88,.02,0,1.42,.22,0,.009);b.box('glow',w*.92,.018,.024,0,1.89,.20);}
   if(kind==='toilet'){b.box('ceramic',.36,.69,.17,0,.39,-.245,0,.035);b.ball('ceramic',0,.30,.04,.205,.14,.26);b.ball('ceramic',0,.15,-.01,.14,.14,.18);const seat=new THREE.TorusGeometry(1,.065,8,40);seat.scale(.18,.245,.25);b.add('ceramic',seat,0,.435,.045,Math.PI/2);b.ball('ceramic',0,.453,.045,.185,.018,.25);b.box('chrome',.07,.008,.03,0,.742,-.245,0,.003);}
   if(kind==='washer'){b.box('ceramic',w,.84,d,0,.44,0,0,.025);b.box('metal',w-.07,.075,.008,0,.775,-d/2-.008);b.cyl('chrome',.19,.19,.025,0,.42,-d/2-.02,32,Math.PI/2);b.cyl('black',.15,.15,.028,0,.42,-d/2-.036,32,Math.PI/2);b.cyl('chrome',.022,.022,.015,-.19,.77,-d/2-.019,16,Math.PI/2);}
-  if(kind==='bathtub'){b.add('ceramic',tubGeometry(w,d));b.cyl('chrome',.025,.025,.004,0,.187,-d*.29,18);faucet(b,0,.60,-d*.43);b.box('oakEnd',w+.04,.025,.21,0,.605,d*.16,0,.012);vase(b,.1,.62,d*.16,.65);}
+  if(kind==='bathtub'){b.add('ceramic',tubGeometry(w,d));b.cyl('chrome',.025,.025,.004,0,.187,-d*.29,18);faucet(b,0,.60,d*.43);b.box('oakEnd',w+.04,.025,.21,0,.605,d*.16,0,.012);vase(b,.1,.62,d*.16,.65);}
 }
 function kitchen(b,w,d){const mw=w/5;b.box('metal',w-.08,.10,d-.04,0,.08,0);for(let i=0;i<5;i++){const x=-w/2+mw*(i+.5);b.box('blue',mw-.012,.73,d,x,.47,0,0,.012);b.box('brass',mw-.16,.012,.012,x,.76,-d/2-.014,0,.004);}b.box('stone',w+.02,.046,d+.045,0,.862,0,0,.012);b.box('stone',w,.54,.018,0,1.16,d/2+.007);
   const fx=w/2-.30;b.box('oak',.60,2.40,d+.015,fx,1.20,0,0,.013);b.box('oak',.577,1.52,.025,fx,1.60,-d/2-.026,0,.012);b.box('oak',.577,.76,.025,fx,.43,-d/2-.026,0,.012);b.box('metal',.022,.40,.03,fx-.23,1.20,-d/2-.05,0,.005);
@@ -82,7 +82,7 @@ function kitchen(b,w,d){const mw=w/5;b.box('metal',w-.08,.10,d-.04,0,.08,0);for(
 function furniture(b,cut=false){
   b.box('rug',1.67,.018,2.67,1.65,.026,2.65,0,.008);b.box('linen',2.45,.018,2.65,4.75,.026,1.86,0,.008);b.box('rug',2.08,.02,2.25,9.28,.027,3.61,0,.009);b.box('linen',2.01,.018,1.34,9.03,.027,1.35,0,.008);
   for(const i of FURNITURE)b.at(i.x,i.z,i.rotation||0,()=>{const {kind,w,d}=i;
-    if(kind==='singleBed'||kind==='bed')bed(b,w,d,kind==='singleBed');else if(kind==='sofa')sofa(b,w,d);
+    if(kind==='singleBed'||kind==='bed')bed(b,w,d,kind==='singleBed');else if(kind==='sofa')sofa(b,w,d,i.id==='livingSofa'||i.id==='livingChaise'?{rightArm:false}:{});
     else if(kind==='wardrobe'){if(w<d)b.at(0,0,['wardrobe1A','wardrobe2A'].includes(i.id)?-Math.PI/2:Math.PI/2,()=>wardrobe(b,d,w,i.id.startsWith('wardrobe'),cut));else wardrobe(b,w,d,i.id.startsWith('wardrobe'),cut);}
     else if(kind==='desk'){b.box('oak',w,.045,d,0,.755,0,0,.02);for(const x of [-w/2+.08,w/2-.08])for(const z of [-d/2+.06,d/2-.06])b.box('metal',.025,.72,.025,x,.37,z,0,.006);b.box('screen',Math.min(.63,w*.55),.36,.025,0,1.015,-d*.22,0,.012);b.box('metal',.055,.13,.035,0,.83,-d*.22);b.box('metal',.24,.015,.14,0,.779,-d*.18,0,.006);b.box('metal',.33,.012,.11,0,.785,.11,0,.005);b.ball('black',.25,.791,.12,.029,.013,.045);lamp(b,-w*.39,.78,-.1);books(b,w*.31,.78,0,3);}
     else if(kind==='pouf'){b.cyl('green',w*.48,w*.44,.37,0,.23,0,36);b.cyl('green',w*.46,w*.48,.065,0,.44,0,36);}
@@ -92,7 +92,7 @@ function furniture(b,cut=false){
     else if(kind==='petBowls')bowls(b);
     else if(kind==='litterBox')litterBox(b,w,d);
     else if(kind==='coffee'){b.cyl('stone',w*.5,w*.5,.045,0,.40,0,48);b.cyl('oakEnd',.18,.23,.34,0,.20,0,36);books(b,-.12,.427,-.03,4);vase(b,.16,.427,.09,.7);}
-    else if(kind==='dining'){b.box('oak',w,.045,.80,0,.76,0,0,.02);for(const x of [-w*.32,w*.32])b.cyl('oakEnd',.065,.045,.72,x,.38,0,16);for(const x of [-.40,.40])for(const z of [-.60,.60])chair(b,x,z,z<0?Math.PI:0);vase(b,0,.79,0);b.cyl('stone',.16,.16,.012,.31,.791,0,32);}
+    else if(kind==='dining'){b.box('oak',w,.045,.80,0,.76,0,0,.02);for(const x of [-w*.32,w*.32])b.cyl('oakEnd',.065,.045,.72,x,.38,0,16);for(const x of [-.40,.40])for(const z of [-.60,.60])chair(b,x,z,z<0?0:Math.PI);vase(b,0,.79,0);b.cyl('stone',.16,.16,.012,.31,.791,0,32);}
     else if(kind==='kitchen')kitchen(b,w,d);else if(kind==='media'){b.box('oak',w,.31,d,0,.43,0,0,.018);b.box('screen',.024,.67,d*.91,-w/2-.03,1.25,0,0,.01);}
     else if(kind==='bench'){b.box('oak',w,.32,d,0,.21,0,0,.025);b.box('linen',w,.11,d,0,.42,0,0,.047);}else bathroom(b,i);
   });

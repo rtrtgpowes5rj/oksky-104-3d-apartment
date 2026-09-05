@@ -19,7 +19,7 @@ export const ROOMS=[
   {id:'master',index:'04',name:'Мастер-спальня',shortName:'Спальня',area:'12,85 м²',areaM2:12.85,fill:'#c0b29f',floor:rect(3.10,.12,6.85,3.55),center:[4.98,1.84],walk:{x:5.10,z:3.18,yaw:0},overview:{target:[4.98,0,1.84],offset:[4.5,5.4,5.1]}},
   {id:'office',index:'05',name:'Кабинет / лаунж',shortName:'Кабинет',area:'7,02 м²',areaM2:7.02,fill:'#a99f8f',floor:rect(7.18,.12,10.48,2.25),center:[8.83,1.18],walk:{x:8.18,z:1.72,yaw:Math.PI},overview:{target:[8.83,0,1.18],offset:[4.0,4.6,4.4]}},
   {id:'wardrobe2',index:'06',name:'Гардеробная 2',shortName:'Гард. 2',area:'2,60 м²',areaM2:2.60,fill:'#928a7e',floor:rect(3.10,3.55,6.00,4.45),center:[4.55,4.00],walk:{x:5.72,z:3.88,yaw:Math.PI/2},overview:{target:[4.55,0,4.00],offset:[3.8,4.4,4.1]}},
-  {id:'wardrobe1',index:'07',name:'Гардеробная 1',shortName:'Гард. 1',area:'2,80 м²',areaM2:2.80,fill:'#91897c',floor:rect(.12,5.00,1.47,7.08),center:[.80,6.04],walk:{x:1.08,z:6.04,yaw:Math.PI/2},overview:{target:[.80,0,6.04],offset:[3.4,4.2,4.0]}},
+  {id:'wardrobe1',index:'07',name:'Гардеробная 1',shortName:'Гард. 1',area:'3,48 м²',areaM2:3.48,fill:'#91897c',floor:rect(.12,4.50,1.47,7.08),center:[.80,5.79],walk:{x:1.08,z:5.88,yaw:Math.PI/2},overview:{target:[.80,0,5.79],offset:[3.4,4.2,4.0]}},
   {id:'wc',index:'08',name:'Санузел 1',area:'2,58 м²',areaM2:2.58,fill:'#a8afaa',floor:rect(3.62,5.00,4.86,7.08),center:[4.24,6.04],walk:{x:4.08,z:5.48,yaw:Math.PI},overview:{target:[4.24,0,6.04],offset:[3.4,4.2,4.0]}},
   {id:'bath',index:'09',name:'Санузел 2',shortName:'Ванная',area:'4,58 м²',areaM2:4.58,fill:'#a0aaa6',floor:rect(4.98,5.00,7.18,7.08),center:[6.08,6.04],walk:{x:5.44,z:5.48,yaw:-Math.PI/2},overview:{target:[6.08,0,6.04],offset:[3.6,4.4,4.2]}},
 ];
@@ -46,7 +46,7 @@ export const WALLS=[
   wall(7.12,2.31,7.82,2.31,'acoustic'),wall(8.72,2.31,10.60,2.31,'acoustic'),
 
   // Гардеробная 1 и нижний санитарный блок.
-  wall(0,5.08,1.53,5.08,'interior'),wall(1.53,5.08,1.53,5.38,'interior'),wall(1.53,6.22,1.53,7.20,'interior'),
+  wall(1.53,4.44,1.53,5.38,'interior'),wall(1.53,6.22,1.53,7.20,'interior'),
   wall(3.56,5.08,4.92,5.08,'interior'),wall(3.56,5.08,3.56,5.38,'interior'),wall(3.56,6.22,3.56,7.20,'interior'),
   wall(4.92,5.08,4.92,7.20,'interior'),
   wall(4.92,5.08,5.50,5.08,'interior'),wall(6.38,5.08,7.18,5.08,'interior'),wall(7.18,5.08,7.18,7.20,'interior'),
@@ -77,12 +77,12 @@ export const FURNITURE=[
   {id:'officeDesk',kind:'desk',x:8.45,z:.55,w:2.10,d:.62,blocking:true,map:'#926846'},
   {id:'officeChair',kind:'lounge',x:9.65,z:1.48,w:.80,d:.82,rotation:.78,blocking:true,map:'#687268'},
   {id:'officeShelves',kind:'wardrobe',x:10.22,z:.98,w:.48,d:1.35,blocking:true,map:'#555c59'},
-  {id:'livingSofa',kind:'sofa',x:10.00,z:3.68,w:2.20,d:.86,rotation:-Math.PI/2,blocking:true,map:'#68635e'},
-  {id:'livingChaise',kind:'sofa',x:9.38,z:2.82,w:1.36,d:.86,blocking:true,map:'#68635e'},
+  {id:'livingSofa',kind:'sofa',x:10.00,z:3.72,w:2.04,d:.88,rotation:-Math.PI/2,blocking:true,map:'#68635e'},
+  {id:'livingChaise',kind:'sofa',x:9.34,z:2.83,w:1.38,d:.88,blocking:true,map:'#68635e'},
   {id:'coffee',kind:'coffee',x:8.96,z:4.00,w:.78,d:.78,blocking:true,map:'#9a704b'},
   {id:'dining',kind:'dining',x:9.04,z:5.58,w:1.34,d:1.38,blocking:true,map:'#9a704b'},
   {id:'kitchen',kind:'kitchen',x:8.90,z:6.82,w:2.98,d:.58,blocking:true,map:'#3d4744'},
-  {id:'wardrobe1A',kind:'wardrobe',x:.40,z:6.04,w:.50,d:1.84,blocking:true,map:'#555c59'},
+  {id:'wardrobe1A',kind:'wardrobe',x:.40,z:5.73,w:.50,d:2.46,blocking:true,map:'#555c59'},
   {id:'hallBench',kind:'bench',x:3.02,z:6.88,w:.72,d:.28,blocking:false,map:'#9a704b'},
   {id:'wcVanity',kind:'sink',x:3.92,z:6.78,w:.58,d:.42,blocking:false,map:'#deded8'},
   {id:'wcToilet',kind:'toilet',x:4.50,z:6.20,w:.50,d:.70,rotation:-Math.PI/2,blocking:true,map:'#deded8'},

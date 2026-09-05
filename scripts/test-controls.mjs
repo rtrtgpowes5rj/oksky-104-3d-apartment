@@ -12,4 +12,5 @@ for(const [key,yaw,axis,sign] of [['KeyW',0,'z',-1],['KeyS',0,'z',1],['KeyD',0,'
 c.wheel({preventDefault(){},deltaY:-10000});assert.equal(c.camera.fov,48);
 c.wheel({preventDefault(){},deltaY:10000});assert.equal(c.camera.fov,78);
 c.down({code:'KeyW',preventDefault(){}});c.up({code:'KeyW'});assert.equal(c.keys.size,0);
-console.log('PASS: WASD in camera coordinates, rotated camera, zoom limits, key release');
+c.enter({x:7.8,z:4.8,yaw:0});const joystickStart=c.position.clone();c.setMoveVector(.75,.75);c.update(.04);c.setMoveVector(0,0);assert(c.position.distanceTo(joystickStart)>0,'analog joystick moves camera');assert(Math.hypot(c.moveInput.x,c.moveInput.y)===0,'joystick releases cleanly');
+console.log('PASS: WASD and analog joystick in camera coordinates, rotated camera, zoom limits, clean release');
